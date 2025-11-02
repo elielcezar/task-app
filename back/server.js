@@ -9,6 +9,7 @@ import path from 'path';
 import { fileURLToPath } from 'url';
 import { verificarConfiguracao } from './utils/emailConfig.js';
 
+const PORT = process.env.PORT || 3003;
 
 // Configurar __dirname para ES modules
 const __filename = fileURLToPath(import.meta.url);
@@ -31,7 +32,8 @@ app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
 
 verificarConfiguracao();
 
-const PORT = 4000;
-app.listen(PORT, '0.0.0.0', () => {
+// Iniciar servidor
+app.listen(PORT, () => {
     console.log(`Servidor rodando na porta ${PORT}`);
-});
+  });
+   
