@@ -23,11 +23,12 @@ const app = express();
 app.use(express.json());
 app.use(cors());
 
-// Rotas especificas para cada caso
-app.use(usuariosRoutes);
-app.use(imoveisRoutes);
-app.use(loginRoutes);
-app.use(senhaRoutes);
+// Rotas da API com prefixo /api
+app.use('/api', usuariosRoutes);
+app.use('/api', imoveisRoutes);
+app.use('/api', loginRoutes);
+app.use('/api', senhaRoutes);
+
 // Servir arquivos estáticos da pasta uploads
 app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
 
