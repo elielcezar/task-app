@@ -9,14 +9,15 @@ import path from 'path';
 import { fileURLToPath } from 'url';
 import { verificarConfiguracao } from './utils/emailConfig.js';
 
-const PORT = process.env.PORT || 3003;
+// Carregar variáveis de ambiente do arquivo .env PRIMEIRO
+dotenv.config();
 
 // Configurar __dirname para ES modules
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
-// Carregar variáveis de ambiente do arquivo .env
-dotenv.config();
+// Definir a porta DEPOIS de carregar o .env
+const PORT = process.env.PORT || 3003;
 
 const app = express();
 app.use(express.json());
